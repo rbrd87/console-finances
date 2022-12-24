@@ -86,3 +86,14 @@ var finances = [
     ['Jan-2017', 138230],
     ['Feb-2017', 671099]
 ];
+
+// Separated the financial values into it's own array called 'dollars'
+//Column [0] is the dates - column [1] is the profit/loss values
+var dollars = finances.map(function(splitArrays) {
+    return splitArrays[1];
+});
+
+// Calculated the total number of months
+var numberOfMonths = finances.length
+
+console.log(numberOfMonths)
