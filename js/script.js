@@ -88,8 +88,8 @@ var finances = [
 ];
 
 // Separated the financial values into it's own array called 'dollars'
-//Column [0] is the dates - column [1] is the profit/loss values
-var dollars = finances.map(function(splitArrays) {
+// Column [0] is the dates - column [1] is the profit/loss values
+var dollars = finances.map(function (splitArrays) {
     return splitArrays[1];
 });
 
@@ -101,4 +101,41 @@ function totalAmount(total, num) {
     return total + num;
 }
 
-// 
+// Used a function to start at position 1 (2nd value in array) 
+// it will deduct from the previous value each increment
+function monthlyProfitDiff(ary) {
+    var profitChange = [];
+    for (var i = 1; i < ary.length; i++)  profitChange.push(dollars[i] - ary[i - 1])
+    return profitChange;
+}
+
+// Find the total monthly profit diff
+var avgProfitChange = monthlyProfitDiff(dollars).reduce(totalAmount)
+
+// Find the total average change, fixed to 2 decimal points.
+// Calculation is the monthly profit difference divided by the number of months
+var totalAvgChange = (avgProfitChange / numberOfMonths).toFixed(2)
+
+// In order to find the highest and lowest values - I sorted the values 
+// the variable sortedFinances will hold the sorted values.
+var sortedFinances = finances.sort(function (a, b) {
+    return b[1] - a[1]
+});
+
+// I created a variable called 'biggestProfit'
+// which took the very top value from the sorted finances and stored it
+var biggestProfit = sortedFinances[0];
+
+// I then created a variable called 'lowestProfit'
+// this takes the bottom value from the sorted finances and stores it
+var lowestProfit = sortedFinances[sortedFinances.length - 1];
+
+
+// Using the above variables I was able to then created further variables
+// that when called had the right format needed with the dollar sign
+var greatestProfitIncrease = biggestProfit[0] + ", ($" + bigIncrease[1] + ")";
+
+var greatestProfitDecrease = lowestProfit[0] + ", ($" + bigDecrease[1] + ")";
+
+// Finanlly all information required is printed to the console
+console.log("Financial Analysis" + "\n--------------------" + "\nTotal Months: " + numberOfMonths + "\nTotal: $" + dollars.reduce(totalAmount) + "\nAverage Change: $" + totalAvgChange + "\nGreatest Increase in profits: " + greatestProfitIncrease + "\nGreatest Decrease in profits: " + greatestProfitDecrease);
