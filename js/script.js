@@ -139,4 +139,6 @@ var greatestProfitIncrease = biggestProfit[0] + " ($" + biggestProfit[1] + ")";
 var greatestProfitDecrease = lowestProfit[0] + " ($" + lowestProfit[1] + ")";
 
 // Finanlly all information required is printed to the console
-console.log("Financial Analysis" + "\n--------------------" + "\nTotal Months: " + numberOfMonths + "\nTotal: $" + dollars.reduce(totalAmount) + "\nAverage Change: $" + totalAvgChange + "\nGreatest Increase in profits: " + greatestProfitIncrease + "\nGreatest Decrease in profits: " + greatestProfitDecrease);
+console.log("Financial Analysis" + "\n--------------------" + "\nTotal Months: " + numberOfMonths +
+    "\nTotal: $" + dollars.reduce(totalAmount) + "\nAverage Change: $" + totalAvgChange +
+    "\nGreatest Increase in profits: " + greatestProfitIncrease + "\nGreatest Decrease in profits: " + greatestProfitDecrease);
