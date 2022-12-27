@@ -113,8 +113,9 @@ function monthlyProfitDiff(ary) {
 var avgProfitChange = monthlyProfitDiff(dollars).reduce(totalAmount)
 
 // Find the total average change, fixed to 2 decimal points.
-// Calculation is the monthly profit difference divided by the number of months
-var totalAvgChange = (avgProfitChange / numberOfMonths).toFixed(2)
+// Calculation is the monthly profit difference divided by the number of months minus the first month as this was the first initial profit. 
+// If needing to be divded by the 'total number of months' just remove the -1
+var totalAvgChange = (avgProfitChange / numberOfMonths - 1).toFixed(2)
 
 // In order to find the highest and lowest values - I sorted the values 
 // the variable sortedFinances will hold the sorted values.
@@ -133,9 +134,9 @@ var lowestProfit = sortedFinances[sortedFinances.length - 1];
 
 // Using the above variables I was able to then created further variables
 // that when called had the right format needed with the dollar sign
-var greatestProfitIncrease = biggestProfit[0] + ", ($" + bigIncrease[1] + ")";
+var greatestProfitIncrease = biggestProfit[0] + " ($" + biggestProfit[1] + ")";
 
-var greatestProfitDecrease = lowestProfit[0] + ", ($" + bigDecrease[1] + ")";
+var greatestProfitDecrease = lowestProfit[0] + " ($" + lowestProfit[1] + ")";
 
 // Finanlly all information required is printed to the console
 console.log("Financial Analysis" + "\n--------------------" + "\nTotal Months: " + numberOfMonths + "\nTotal: $" + dollars.reduce(totalAmount) + "\nAverage Change: $" + totalAvgChange + "\nGreatest Increase in profits: " + greatestProfitIncrease + "\nGreatest Decrease in profits: " + greatestProfitDecrease);
