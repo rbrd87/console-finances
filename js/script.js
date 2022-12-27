@@ -96,4 +96,9 @@ var dollars = finances.map(function(splitArrays) {
 // Calculated the total number of months
 var numberOfMonths = finances.length
 
-console.log(numberOfMonths)
+// Using a function we can work out the total amount with Array reduce() e.g dollars.reduce(totalAmount)
+function totalAmount(total, num) {
+    return total + num;
+}
+
+// 
